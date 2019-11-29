@@ -1,5 +1,8 @@
 <?php
 
+include_once "View.php";
+include_once "User.php";
+
 /**
  * Class DI
  *
@@ -11,9 +14,7 @@ class DI {
     public static function getInstanceOf($className, $arguments = null) {
 
         // checking if the class exists
-        if(!class_exists($className)) {
-            throw new Exception("DI: missing class '".$className."'.");
-        }
+
 
 
         // initialized the ReflectionClass
@@ -38,8 +39,8 @@ class DI {
                     $parts = explode(" ", $parts[1]);
                     if(count($parts) > 1) {
                         $key = $parts[1];
-                        $key = str_replace("\\n", "", $key);
-                        $key = str_replace("\\r", "", $key);
+                        $key = trim($key);
+
                         if(isset(self::$map->$key)) {
                             switch(self::$map->$key->type) {
                                 case "value":

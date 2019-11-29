@@ -9,12 +9,14 @@ DI::mapClass("user", "User", [
     "age" => 22,
 ]);
 
-DI::mapClass("view", "View");
 
 $view = DI::getInstanceOf("View");
 
+
+echo "\*********** Result **************\ \r\n ";
+
 $view->show();
 
-var_dump(DI::getMap());
+echo "\*********** DEBUG **************\ \r\n ";
 
-// DI::mapClass("view", "View");
+var_dump(DI::getMap());
